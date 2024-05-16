@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%- include("partials/header.ejs") %>
+
+    <h1 class="edit-title">Edit Your Post</h1>
+    
+    <form action="/edit/<%= post.id %>" method="post"  enctype="multipart/form-data">
+      <div  class="edit-container">
+      <label for="title">Title:</label><br />
+      <input
+        type="text"
+        id="title"
+        name="title"
+        value="<%= post.title %>"
+        required
+        class="Feedback-input"
+      /><br />
+
+      <label for="description">Description Here:</label><br />
+      <textarea id="description" name="description" rows="5" cols="60"  class="Feedback-input" required>
+<%= post.description %></textarea
+      ><br />
+
+      <label for="imageUrl">Add New Image:</label><br />
+      <img src="/images/placeholder.png" alt="picture" id="profile-pic" 
+      class="placeholder" name="image" ><br>
+      <input
+        type="file"
+        id="imageUrl"
+        name="imageUrl"
+        value="<%= post.imageUrl %>"
+        required
+      /><br />
+
+      <button type="submit">Create New Post</button>
+    </div>
+    </form>
+ 
+       
+</script>
+<%- include("partials/footer.ejs") %>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Afghan dishes blog</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js"></script>
+  </head>
+  <body>
+    <!-- adding header -->
+<%- include("partials/header.ejs") %>
+   
+   
+
+    <ul >
+      <% posts.forEach(post => { %>
+      <li class="container">
+        <h2 class="post_title" ><%= post.title %></h2>
+        <p class="post_description"><%= post.description %></p>
+        <img
+        src="<%= post.imageUrl %>"
+        alt="<%= post.title %>"
+        style="max-width: 300px"
+          class="blog_image"
+        />
+        <form action="/delete/<%= post.id %>" method="POST" enctype="multipart/form-data">
+          <div class="blog-input">
+          <button  type="submit" id="deleteBtn"
+           class="deletButton" >Delete</button>
+          <a  class="link" href="/edit/<%= post.id %>" >Edit</a>
+        </div>
+      
+        </form>
+      </li>
+      <% }) %>
+    </ul>
+
+
+   
+
+  <!-- Confirmation Modal -->
+<div id="confirm_Modal" class="modal">
+  <div class="modal-content">
+    <span class="closeButton">&times;</span>
+    <h2>Confirm Deletion</h2>
+    <p>Are you sure you want to delete ?</p>
+    <div class="modal-buttons">
+      <button id="confirmBtn" class="confirm">Confirm</button>
+      <button id="cancelBtn" class="cancel">Cancel</button>
+    </div>
+  </div>
+</div> 
+<!-- adding the footer partial -->
+<%- include("partials/footer.ejs") %>
+
+  </body>
+</html>
